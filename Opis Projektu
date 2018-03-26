@@ -1,0 +1,75 @@
+Krótkie uzupełnienie dzisiejszego rozpoczęcia projektu z PROZ.
+
+- zaproponowana lista gier nie jest pełna, można oczywiście również zaproponować własny pomysł na grę. Ci z Państwa którzy mają już doświadczenie w programowaniu w Javie mogą wykorzystać dodatkowe narzędzia, silniki, biblioteki (istnieje np. javowy port świetnych i bardzo prostych w użyciu bibliotek Box2D i LiquidFun).
+
++ dokumentacja wstępna i wydmuszka interfejsu są obowiązkowe, ale służą doprecyzowaniu specyfikacji projektu i nie podlegają ocenie punktowej.
+
++ szybka implementacja wydmuszki interfejsu graficznego pozwoli Państwu łatwiej wyobrazić sobie strukturę logiki oraz zidentyfikować potencjalne trudności w jej implementacji. W naturalny sposób wymusi również modularność logiki i jej separację od interfejsu. Wydmuszka powinna demonstrować widok aplikacji bez podpiętej logiki (albo ze szczątkową), a w przypadku gier powinna zawierać również prototyp sceny.
+
++ proszę tworzyć kod w założeniu, że jest nie tylko produktem dla klienta/zleceniodawcy (w tym przypadku dla mnie), ale też dla kolejnych inżynierów, którzy mogą mieć udział
+w rozbudowie projektu. Proponuję komentować kod na bieżąco, tworzyć krótki Javadoc dla każdej klasy i jej kluczowych metod i tworzyć testy równolegle z kodem (można też
+stosować np. test-driven development).
+
+? za "nietrywialne techniki programistyczne" będę uznawał korzystanie z wzorców projektowych (szczególnie przydatne i w zasadzie intuicyjne w wielu przypadkach będą fasada, singleton, fabryka i kompozyt), ale również integrację z dodatkowym oprogramowaniem, aspekt sieciowy itp.
+
++ metodyka wytwarzania kodu jest ważnym elementem projektu - proszę zadbać o to, by na każdym etapie istniała działająca, otestowana wersja programu, niezależnie od stopnia ukończenia jego funkcjonalności. Proszę aktywnie unikać sytuacji, w której wszystkie moduły programu są rozwijane jednocześnie i nic nie działa. Zalecam również robienie częstych, niewielkich commitów i dbałość o strukturę repozytorium (rozwijanie nowych funkcjonalności w osobnych gałęziach itp.).
+
+? na potrzeby projektu nie celujemy w 100% pokrycia testami - proszę jednak zadbać o to, by kluczowe funkcjonalności były testowane na bieżąco.
+
++ konsultacje proszę ustalać indywidualnie mailowo (remont wydziału nieco utrudnia nam funkcjonowanie). W przypadku większego zapotrzebowania na konsultacje, np. przy okazji demonstracji prototypu interfejsu, będę wdzięczny za ustalenie terminu grupowo. Projekty można też konsultować zdalnie. Podstawą do rozmów jest zawartość repozytorium.
+
+W związku z tym, Państwa najbliższymi krokami powinny być:
+1) wybór tematu poprzedzony szybkim researchem - proszę o informację mailową;
+ODTWARZACZ PLIKÓW MUZYCZNYCH
+
+2) konfiguracja środowiska (IDE, JDK, Maven, repozytorium) - w tym celu polecam sprawnie stworzyć mini-aplikację typu Hello world (dodawanie dwóch intów wczytanych z pól tekstowych,
+wyświetlanie obrazka z folderu itp.), z prostym
+interfejsem graficznym i drobnymi testami jednostkowymi. Proponuję tworzyć ją w kilku commitach - można za jednym zamachem
+przećwiczyć korzystanie z systemu kontroli wersji, Mavena i JUnit.
+Ćwiczenie to zalecam w szczególności tym z Państwa, którzy nie mają jeszcze doświadczenia w korzystaniu z takiego środowiska.
+
+Pomocne linki:
+git http://marklodato.github.io/visual-git-guide/index-en.html oraz https://try.github.io/levels/1/challenges/1
+maven https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+JUnit https://junit.org/junit5/docs/current/user-guide/#overview
+
+Większość IDE znakomicie współpracuje z powyższymi narzędziami i znacząco upraszcza korzystanie z nich.
+
+3) zaplanowanie funkcjonalności aplikacji docelowej;
+możliwość otwierania pliku z dysku, wyświetlania informacji o odtwarzanym utworze, regulacji poziomu głośności.
+
+4) zaprojektowanie szkieletu interfejsu;
+5) zaplanowanie kolejnych iteracji tworzenia kodu i testowania aplikacji.
+
+==============================================
+
+
+
+
+Chciałbym ustalić temat mojego projektu semestralnego z przedmiotu PROZ.
+Najchętniej zajmę się stworzeniem odtwarzacza plików muzycznych.
+Jako funkcjonalność tego odtwarzacza przewiduję m.in. możliwość otwierania pliku z dysku, wyświetlania informacji o odtwarzanym utworze, regulacji poziomu głośności.
+Dokładniejszą koncepcję funkcjonalności przedstawię wraz z prototypem interfejsu.
+
+
+==============================================
+
+
+
+
+
+W związku z napływającymi pytaniami przypominam, że w przyszłym tygodniu mamy termin specyfikacji projektu i prezentacji prototypu interfejsu.
+Przypominam, że interfejs NIE ma być screenshotem, wydrukiem z painta itp., lecz implementacją. Tym z Państwa, którzy jeszcze nie dokonali wyboru biblioteki do GUI, polecałbym JavaFX i pisanie interfejsu ręcznie (JavaFX jest bardzo proste, a narzędzia typu SceneBuilder z reguły początkowo bardziej przeszkadzają niż pomagają). Podstawowa składnia Javy jest bardzo podobna do C++ i nie powinna sprawić Państwu żadnych problemów, środowiska typu IntelliJ i Eclipse bardzo ułatwiają programowanie, a do JavaFX istnieje bogata dokumentacja i mnóstwo materiałów z przykładami.
+
+Przy okazji omówienia specyfikacji prosiłbym o:
+- omówienie planowanego zakresu funkcjonalności i działania aplikacji;
+- omówienie wstępnej koncepcji implementacji;
+- prezentację skonfigurowanego środowiska pracy;
+- prezentację repozytorium;
+- prezentację interfejsu (czyli odpalamy Maven install);
+Podsumowaniem rozmowy będzie przesłanie na mojego maila linku do repozytorium i krótkiego dokumentu (pdf, max 2 strony) będącego podsumowaniem w/w punktów (może być już po konsultacji).
+
+Wstępnie zakładam, że specyfikacje będziemy konsultować w standardowym poniedziałkowym terminie w sali 138, ale jestem otwarty na inne terminy. W szczególności, jeśli macie Państwo dobrze skonfigurowany projekt i jasny plan implementacji, to do piątku 23:59 sprawę specyfikacji można załatwić zdalnie (link + pdf), a w razie potrzeby (np. zbyt dużo rzeczy do wyjaśnienia) będę zapraszał na rozmowę.
+
+Przypominam, że prezentacja prototypu i omówienie specyfikacji są obowiązkowe, ale nie są punktowane.
+
