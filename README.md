@@ -1,3 +1,3 @@
 # Music Player
-A simple music player developed as a university project for 'Event-Driven Programming' subject (PROZ)
+A simple music player developed as a university project for 'Event-Driven Programming' subject (PROZ)\n
 Projekt odtwarzacza audio realizowany w ramach przedmiotu Programowanie Zdarzeniowe (PROZ)
