@@ -94,7 +94,7 @@ public class Interface extends Application {
         HBox hbox5 = new HBox(albumCover);
         HBox hbox6 = new HBox(time); 
         VBox vbox = new VBox(hbox1,hbox2,hbox3,hbox4,hbox5,hbox6);
-        root.relocate(120, 0);
+        root.relocate(110, 0);
         
         openButton.setOnAction((ActionEvent e) -> {
             try {
