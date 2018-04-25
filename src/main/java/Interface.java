@@ -27,7 +27,7 @@ public class Interface extends Application {
     private Boolean fileinuse = false;
     Label musicLabel = new Label("No File");
     Label nowPlaying = new Label("Now playing:\n");
-    Label songDetails = new Label("Title: Kate Moss\nArtist: Organek\nAlbum: Glupi");
+    Label songDetails = new Label("Title: Kate Moss\nArtist: Organek\nAlbum: Głupi");
     Label time = new Label("\nTime: 0:31/2:46");
     
     public void chooseFile() throws MalformedURLException{
@@ -87,14 +87,21 @@ public class Interface extends Application {
         Button albumCover = new Button();
         albumCover.setGraphic(new ImageView(albumCoverImage));
         
-        HBox hbox1 = new HBox(80, openButton, playButton, pauseButton, stopButton);
-        HBox hbox2 = new HBox(nowPlaying);
-        HBox hbox3 = new HBox(musicLabel);
-        HBox hbox4 = new HBox(songDetails);
-        HBox hbox5 = new HBox(albumCover);
-        HBox hbox6 = new HBox(time); 
-        VBox vbox = new VBox(hbox1,hbox2,hbox3,hbox4,hbox5,hbox6);
-        root.relocate(110, 0);
+        HBox hbox1 = new HBox(80.0);
+        hbox1.getChildren().addAll(openButton, playButton, pauseButton, stopButton);
+        HBox hbox2 = new HBox();
+        hbox2.getChildren().addAll(nowPlaying);
+        HBox hbox3 = new HBox();
+        hbox3.getChildren().addAll(musicLabel);
+        HBox hbox4 = new HBox();
+        hbox4.getChildren().addAll(songDetails);
+        HBox hbox5 = new HBox();
+        hbox5.getChildren().addAll(albumCover);
+        HBox hbox6 = new HBox();
+        hbox6.getChildren().addAll(time);
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(hbox1,hbox2,hbox3,hbox4,hbox5,hbox6);
+        root.relocate(20, 0);
         
         openButton.setOnAction((ActionEvent e) -> {
             try {
