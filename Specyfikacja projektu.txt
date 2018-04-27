@@ -1,0 +1,26 @@
+Projekt odtwarzacza muzycznego
+Przemysław Kacperski, gr. 4I4
+
+Celem projektu jest stworzenie aplikacji będącej prostym odtwarzaczem plików muzycznych.
+
+Planowany zakres funkcjonalności i działania aplikacji
+Aplikacja pozwoli otworzyć plik z dysku, sterować głośnością oraz czasem odtwarzania słuchanego utworu przez odpowiednie przyciski i suwaki, wyświetli informacje o utworze (artysta, tytuł, album, grafika-okładka albumu) zawarte w tagu ID3(v2), da mozliwość użycia equalizera dla odtwarzanych plików, umożliwi odtwarzanie w kolejności sekwencyjnej lub losowej, umożliwi tworzenie playlist.
+Na tym etapie projektu działa już możliwość otwierania pliku z dysku oraz sterowania czasem odtwarzanego utworu za pomocą przycisków Play/Pause/Stop. Działa także samo odtwarzanie muzyki.
+
+Wstępna koncepcja implementacji
+Aplikacja jest rozwijana jako projekt Javy wersji 9 z użyciem JavyFX.
+Zamierzam rozwijać aplikację etapami, tzn. jedna dodatkowa funkcjonalność na jeden etap. Stopniowo więc aplikacja będzie "wzbogacać" się o nowe funkcje.
+
+Środowisko pracy
+Projekt rozwijany jest w środowisku Eclipse, gdzie są skonfigurowane opcje budowania z pomocą narzędzia maven (skonfigurowane opcje Project -> Run as -> Maven build -> install/clean install). Dzięki użyciu narzędzia maven oraz odpowiedniej konfiguracji pliku pom.xml projekt można skompilować, a następnie uruchomić z terminala na każdym komputerze z zainstalowaną Javą 9(*) poleceniami mvn install lub mvn clean install, które powodują utworzenie wykonywalnego archiwum .jar w folderze target katalogu zawierającego pliki projektu.
+
+Repozytorium
+Od momentu utworzenia projektu jest on również umieszczony w serwisie github jako projekt publiczny.
+Adres do repozytorium:
+https://github.com/Slighten22/Music-Player
+
+Interfejs
+Po sklonowaniu repozytorium na swój komputer lub pobraniu plików projektu jako archiwum .zip i rozpakowaniu, wystarczy będąc w głównym katalogu projektu uruchomić polecenie 'mvn install' w terminalu. Spowoduje to zbudowanie projektu i umieszczenie wykonywalnego archiwum .jar w katalogu target. Aby uruchomić program i zobaczyć interfejs wystarczy przejść do tego katalogu i wywołać polecenie 'java -jar MusicPlayer-0.0.1-SNAPSHOT.jar'.
+Obecny wygląd interfejsu to dopiero jego prototyp, interfejs będzie jeszcze poprawiany.
+
+(*) projekt jest rozwijany zgodnie z Javą edycji 9, jednak (przynajmniej póki co) jest kompatybilny wstecz z Javą 8, więc na komputerze z zainstalowaną Javą 8 wystarczy podmienić (w pliku pom.xml) numer wersji z której korzysta maven-compiler-plugin z 9 na 8.

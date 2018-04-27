@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +19,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class Interface extends Application {
 
@@ -73,8 +76,8 @@ public class Interface extends Application {
         StackPane root = new StackPane();
         
         Button openButton = new Button("Open File");
-        Image playButtonImage =	new Image(getClass().getResourceAsStream("play.png"));
         openButton.setStyle("-fx-font-size: 16px;");
+        Image playButtonImage =	new Image(getClass().getResourceAsStream("play.png"));
         Button playButton = new Button();
         playButton.setGraphic(new ImageView(playButtonImage));
         Image pauseButtonImage = new Image(getClass().getResourceAsStream("pause.png"));
@@ -86,11 +89,17 @@ public class Interface extends Application {
         Image albumCoverImage = new Image(getClass().getResourceAsStream("glupi.jpg"));
         Button albumCover = new Button();
         albumCover.setGraphic(new ImageView(albumCoverImage));
+        Button equalizerButton = new Button("Equalizer");
+        equalizerButton.setStyle("-fx-font-size: 14px;");
+        Button newPlaylistButton = new Button("New playlist");
+        newPlaylistButton.setStyle("-fx-font-size: 14px;");
         
-        HBox hbox1 = new HBox(80.0);
-        hbox1.getChildren().addAll(openButton, playButton, pauseButton, stopButton);
-        HBox hbox2 = new HBox();
-        hbox2.getChildren().addAll(nowPlaying);
+        HBox hbox0 = new HBox();
+        hbox0.getChildren().addAll(equalizerButton, newPlaylistButton);
+        HBox hbox1 = new HBox(60.0);
+        hbox1.getChildren().addAll(openButton, playButton, pauseButton, stopButton, hbox0);
+        Text hbox2 = new Text("Now playing:");
+        hbox2.setTextAlignment(TextAlignment.LEFT);
         HBox hbox3 = new HBox();
         hbox3.getChildren().addAll(musicLabel);
         HBox hbox4 = new HBox();
@@ -123,9 +132,11 @@ public class Interface extends Application {
             this.stopFile();
         });
 
+        
         root.getChildren().add(vbox);
-     
-        Scene scene = new Scene(root, 720, 405);
+        StackPane.setAlignment(vbox, Pos.TOP_RIGHT);
+        
+        Scene scene = new Scene(root, 800, 420);
         primaryStage.setTitle("Music Player");
         primaryStage.setScene(scene);
         primaryStage.show();
