@@ -1,6 +1,6 @@
-// Class containing an implemented interface
+/** Main class, containing an implemented interface */
 
-import java.io.File;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,64 +15,49 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 public class Interface extends Application {
-
-    private Stage stage;
-    private String audioFile = null;
-    private MediaPlayer player;
-    private Boolean fileinuse = false;
-    Label musicLabel = new Label("No File");
+    private static Stage stage; // ????
+    //private static String audioFile = null;
+    //private MediaPlayer player;
+    static Label musicLabel = new Label("No File");
     Label nowPlaying = new Label("Now playing:\n");
-    Label songDetails = new Label("Title: Kate Moss\nArtist: Organek\nAlbum: Głupi");
+    //Label songDetails = new Label("Title: Kate Moss\nArtist: Organek\nAlbum: Głupi");
+    private static Label titleInfo = new Label("Title: ");
+    private static Label artistInfo = new Label("Artist: ");
+    private static Label albumInfo = new Label("Album: ");
     Label time = new Label("\nTime: 0:31/2:46");
+    static File file;
     
-    public void chooseFile() throws MalformedURLException{
-            FileChooser chooser = new FileChooser();
-            FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("select your mp3 file", "*.mp3");
-            chooser.getExtensionFilters().add(filter);
-            File file = chooser.showOpenDialog(this.stage);
-            if ( file !=null){
-                musicLabel.setText(file.getName());
-                this.audioFile = file.toURI().toURL().toString();
-            }else{
-                musicLabel.setText("Invalid Filename");
-                this.audioFile = null;
-            }
-            fileinuse = false;
-            player.stop();
+    static Stage getStage() {
+    	return stage;
     }
     
-    public void playFile(){
-            if(fileinuse == true){
-                player.play();
-            }else{
-                Media pick = new Media(this.audioFile);
-                player = new MediaPlayer(pick);
-                player.play();   
-            }
-            fileinuse = true;
+    static Label getMusicLabel() {
+    	return musicLabel;
     }
     
-    public void pauseFile(){
-            player.pause();
+    static Label getTitleInfo() {
+    	return titleInfo;
     }
     
-    public void stopFile(){
-            player.stop();
+    static Label getArtistInfo() {
+    	return artistInfo;
+    }
+    
+    static Label getAlbumInfo() {
+    	return albumInfo;
     }
 
     @Override
     public void start(Stage primaryStage) {
         
         musicLabel.setWrapText(true);
-        this.stage = primaryStage;
+        //this.stage = primaryStage;
+        stage = primaryStage;
         StackPane root = new StackPane();
         
         Button openButton = new Button("Open File");
@@ -101,38 +86,45 @@ public class Interface extends Application {
         Text hbox2 = new Text("Now playing:");
         hbox2.setTextAlignment(TextAlignment.LEFT);
         HBox hbox3 = new HBox();
-        hbox3.getChildren().addAll(musicLabel);
+        hbox3.getChildren().add(musicLabel);
         HBox hbox4 = new HBox();
-        hbox4.getChildren().addAll(songDetails);
+        hbox4.getChildren().add(titleInfo);
         HBox hbox5 = new HBox();
-        hbox5.getChildren().addAll(albumCover);
+        hbox5.getChildren().add(artistInfo);
         HBox hbox6 = new HBox();
-        hbox6.getChildren().addAll(time);
+        hbox5.getChildren().add(albumInfo);
+        HBox hbox7 = new HBox();
+        hbox7.getChildren().add(albumCover);
+        HBox hbox8 = new HBox();
+        hbox8.getChildren().add(time);
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(hbox1,hbox2,hbox3,hbox4,hbox5,hbox6);
+        vbox.getChildren().addAll(hbox1,hbox2,hbox3,hbox4,hbox5,hbox6,hbox7,hbox8);
         root.relocate(20, 0);
+        
         
         openButton.setOnAction((ActionEvent e) -> {
             try {
-                this.chooseFile();
+                //this.ChooseFile.chooseFile();
+                ChooseFile.chooseFile();
             } catch (MalformedURLException ex) {
                 Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
             }
         });  
         
         playButton.setOnAction((ActionEvent e) -> {
-            this.playFile();
+            ChooseFile.playFile();
         });
         
         pauseButton.setOnAction((ActionEvent e) -> {
-            this.pauseFile();
+            ChooseFile.pauseFile();
+        	//ChooseFile.player.pause();
         });
         
         stopButton.setOnAction((ActionEvent e) -> {
-            this.stopFile();
+            ChooseFile.stopFile();
         });
-
         
+    
         root.getChildren().add(vbox);
         StackPane.setAlignment(vbox, Pos.TOP_RIGHT);
         
