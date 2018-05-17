@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
 
 public class ChooseFile {
 	static File file;	
@@ -27,13 +28,6 @@ public class ChooseFile {
 	static MediaPlayer getPlayer() {
 		return player;
 	}
-	/*
-	static void mediaPickPlay() {
-		Media pick = new Media(audioFile);
-		player = new MediaPlayer(pick); // ???
-		player.play(); 
-	}
-	*/
 	public ChooseFile() {
 		try{
 			chooseFile();
@@ -47,7 +41,7 @@ public class ChooseFile {
     	FileChooser chooser = new FileChooser();
     	file = chooser.showOpenDialog(Interface.getStage());
         //FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("select your mp3 file", "*.mp3");
-        //chooser.getExtensionFilters().add(filter); // Do czego to sluzy?!?  
+        //chooser.getExtensionFilters().add(filter); // necessary?!?  
         
         if (file != null){      	
             Interface.getMusicLabel().setText(file.getName());
@@ -67,19 +61,28 @@ public class ChooseFile {
 	
 	
 	 public static void playFile(){
- 		//String audioFile = ChooseFile.getAudioFile();
          if(fileinuse == true){
              player.play();
          }else{
          	 Media pick = new Media(audioFile);
-             //MediaPlayer player = ChooseFile.getPlayer(); // czy to czegos nie schrzani?!? nie powinienem korzystac wciaz z tego samego playera???
              player = new MediaPlayer(pick);
-             player.play();   
+             /**
+              * Project modifications - added functionality of changing playback speed and
+              * setting start and end time for the playback
+              */
+             player.setRate(1.0); // default playback speed; may be changed to any value from [0.0, 8.0]
+             Duration d = new Duration(1000); // duration of one second
+             player.setStartTime(d.multiply(27.671)); // ... multiplied by the exact number of seconds when we want to start the playback!
+             player.setStopTime(d.multiply(62.254)); // ... and stop the playback!
+             player.play(); 
          }
          fileinuse = true;
 	 }
  
 	 public static void pauseFile(){
+		 	/*String currTime = new String();
+		 	currTime = player.getCurrentTime().toString();
+		 	System.out.println(currTime);*/  // just to see how getCurrentTime() method works
 	 		player.pause();
 	 }
 	 
