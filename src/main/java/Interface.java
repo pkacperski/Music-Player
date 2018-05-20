@@ -1,4 +1,6 @@
-/** Main class, containing an implemented interface */
+/**
+ *  Main class, containing an implemented interface
+*/
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -78,9 +80,13 @@ public class Interface extends Application {
         equalizerButton.setStyle("-fx-font-size: 14px;");
         Button newPlaylistButton = new Button("New playlist");
         newPlaylistButton.setStyle("-fx-font-size: 14px;");
+        Button playbackSpeedButton = new Button ("Speed");
+        playbackSpeedButton.setStyle("-fx-font-size: 14px;");
+        Button cutSongFragmentButton = new Button ("Cut fragment");
+        cutSongFragmentButton.setStyle("-fx-font-size: 14px;");
         
         HBox hbox0 = new HBox();
-        hbox0.getChildren().addAll(equalizerButton, newPlaylistButton);
+        hbox0.getChildren().addAll(equalizerButton, newPlaylistButton, playbackSpeedButton, cutSongFragmentButton);
         HBox hbox1 = new HBox(60.0);
         hbox1.getChildren().addAll(openButton, playButton, pauseButton, stopButton, hbox0);
         Text hbox2 = new Text("Now playing:");
@@ -102,6 +108,7 @@ public class Interface extends Application {
         root.relocate(20, 0);
         
         
+        
         openButton.setOnAction((ActionEvent e) -> {
             try {
                 //this.ChooseFile.chooseFile();
@@ -117,18 +124,26 @@ public class Interface extends Application {
         
         pauseButton.setOnAction((ActionEvent e) -> {
             ChooseFile.pauseFile();
-        	//ChooseFile.player.pause();
         });
         
         stopButton.setOnAction((ActionEvent e) -> {
             ChooseFile.stopFile();
         });
         
+        playbackSpeedButton.setOnAction((ActionEvent e) -> {
+        	SetPlaybackSpeed.setSpeed();
+        });
+        
+        cutSongFragmentButton.setOnAction((ActionEvent e) -> {
+        	CutSongFragment.cutFragment();
+        });
+        
+        
     
         root.getChildren().add(vbox);
         StackPane.setAlignment(vbox, Pos.TOP_RIGHT);
         
-        Scene scene = new Scene(root, 800, 420);
+        Scene scene = new Scene(root, 980, 420);
         primaryStage.setTitle("Music Player");
         primaryStage.setScene(scene);
         primaryStage.show();
