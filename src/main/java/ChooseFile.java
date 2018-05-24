@@ -7,16 +7,16 @@ import java.net.MalformedURLException;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
-
+//refactorin guru
 public class ChooseFile {
 	static File file;	
-	private static String audioFile = null;
-	private static Boolean fileInUse = false;
-	private static MediaPlayer player;
+	/*private*/ public static String audioFile = null;
+	/*private*/ public static Boolean fileInUse = false;
+	//private static MediaPlayer player;
+	public static MediaPlayer player;
 	public static Duration startTimeAfterPause;
 	public static Duration d = new Duration(1000); // duration of one second
 	public static Duration prevStartTime; // to remember start time set before pause button was clicked
@@ -49,14 +49,6 @@ public class ChooseFile {
 		return player;
 	}
 	
-	public ChooseFile() {
-		try{
-			chooseFile();
-		} catch (Exception e){
-			System.out.println("Error in ChooseFile class constructor: " + e);
-		}
-	}
-	
 	public static void chooseFile() throws MalformedURLException{
     	FileChooser chooser = new FileChooser();
     	file = chooser.showOpenDialog(Interface.getStage());
@@ -75,7 +67,7 @@ public class ChooseFile {
             Interface.getMusicLabel().setText(file.getName());
             audioFile = file.toURI().toURL().toString();
             GetID3TagInfo.getID3TagInfo(); // try to read ID3 tag info when the file is successfully open
-            playFile();
+ /* !!! */  PlaybackControls.playFile();
         } else { // incorrect file chosen
         	Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Invalid file name");
@@ -84,70 +76,14 @@ public class ChooseFile {
 			alert.showAndWait();
             audioFile = null;
         }
-        
     }
 	
-	
-	public static void playFile(){
-			if(fileInUse == true)
-	        	playFunction();
-	        else {
-	         	 Media pick = new Media(audioFile);
-	             player = new MediaPlayer(pick);
-	             playFunction();
-	        }
-	 }
-	
-	public static void playFunction() {
-		 if (pauseFlag == false) {
-        	 if (CutSongFragment.getWereStartStopTimesChanged() == true) // remember the desired start and stop time values
-        		 CutSongFragment.setStartStopTimes();
-        	 // do not set anything if the user did not give start and stop times
-    	 }
-    	 else { // only set stop time if start time is set by pause button
-    		if (CutSongFragment.getWereStartStopTimesChanged() == true) {
-        		CutSongFragment.setStopTime();
-        		if (prevStartTime == null) // only if it was not previously overwritten!
-        			prevStartTime = player.getStartTime();
-        		player.setStartTime(startTimeAfterPause);
-    		}
-    		else
-    			player.setStartTime(startTimeAfterPause);
-    		pauseFlag = false;
-    	 }
-     player.setRate(tempRate);
-     player.play();
+	public ChooseFile() {
+		try{
+			chooseFile();
+		} catch (Exception e){
+			System.out.println("Error in ChooseFile class constructor: " + e);
+		}
 	}
- 
-	 public static void pauseFile(){
-		 	pauseFlag = true;
-		 	wasPausedFlag = true;
-		 	startTimeAfterPause = player.getCurrentTime();
-		 	tempRate = player.getRate();
-		 	//player.setStartTime(player.getCurrentTime()); // to start where we paused after clicking "play"!
-	 		player.pause();
-	 }
-	 
-	 public static void stopFile(){
-		 	tempRate = player.getRate();
-	 		player.stop();
-	 		
-	 		if (wasPausedFlag == false) { // if pause was not pressed, it is OK to leave start and stop times as they were before
-		 		if (CutSongFragment.getWereStartStopTimesChanged() == true) { // remember the desired start and stop time values
-			 			player.setStartTime(d.multiply(CutSongFragment.startTime));
-			 			player.setStopTime(d.multiply(CutSongFragment.stopTime));
-		 		} // no need for else here - if there was no pause and no start or stop time change, stop returns to the beggining of the file by default		
-		 	}
-	 		else { // pause was pressed - start from the set startTime, not from the moment of last pause!
-	 			if (CutSongFragment.getWereStartStopTimesChanged() == true) { // remember the desired start and stop time values
-		 			if (prevStartTime != null)
-	 					player.setStartTime(prevStartTime);
-		 			player.setStopTime(d.multiply(CutSongFragment.stopTime));
-	 			}
-	 			else { // the user did not give startTime or stopTime and pause was pressed - start playing file from the beginning
-	 				player.setStartTime(d.multiply(0.0));
-	 			}
-	 		}
-	 }
-	 
+	
 }
