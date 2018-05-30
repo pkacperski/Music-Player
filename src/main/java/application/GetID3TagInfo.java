@@ -61,17 +61,17 @@ public class GetID3TagInfo {
 						albumInfo = "Album:\t\t   " + tag.getAlbum();
 					
 					byte[] imageData = tag.getAlbumImage();
-					  if (imageData != null) {						 
+					  if (tag.getAlbumImage() != null) {						 
 					    // Write image to file 
-					    RandomAccessFile file = new RandomAccessFile("src/main/resources/album-artwork.jpg", "rw");
+					    RandomAccessFile file = new RandomAccessFile("albumartwork.jpg", "rw");
 					    file.write(imageData);
 					    file.close();
 					  
-					    ImageView albumCoverImageView = new ImageView("file:src/main/resources/album-artwork.jpg"); // the "file:" part must remain here!!
+					    ImageView albumCoverImageView = new ImageView("file:albumartwork.jpg"); // the "file:" part must remain here!!
 					    albumCover = albumCoverImageView.getImage();
 					  }  	
 					  else {
-						  ImageView albumCoverImageView = new ImageView("file:src/main/resources/note.png");
+						  ImageView albumCoverImageView = new ImageView("file:note.png");
 						  albumCover = albumCoverImageView.getImage();
 					  }
 					  

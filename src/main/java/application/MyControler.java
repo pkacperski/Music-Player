@@ -97,12 +97,12 @@ public class MyControler {
 	
 	@FXML
 	private void setSpeed(ActionEvent e) {
-		SetPlaybackSpeed.setSpeed(); //pom
+//		SetPlaybackSpeed.setSpeed(); //pom
 	}
 	
 	@FXML
 	private void loopFragment(ActionEvent e) {
-		CutSongFragment.cutFragment();
+//		CutSongFragment.cutFragment();
 	}
 	
 	public MyControler() {

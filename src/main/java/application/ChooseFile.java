@@ -6,9 +6,6 @@ package application;
 
 import java.io.File;
 import java.net.MalformedURLException;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -80,31 +77,11 @@ public class ChooseFile {
         		|| file.toString().substring(file.toString().length()-4).equals(".MP3")) ){
         	fileName = file.toString();
             fileName = fileName.substring(fileName.lastIndexOf('/')+1);
-           
-            
-            
-            //blad Radzia
-            //MyControler.getNowPlayingLabel().setText("Now playing: " + fileName);
-
-            //MyControler temp = new MyControler();
-            //if(temp.getNowPlayingLabel() != null)
-            	//Main.control.setNowPlayingLabel("Now playing: " + fileName);
-            	//Main.control.setText("Now playing: " + fileName);
-            //Label temp = MyControler.getNowPlayingLabel();
-        	//MyControler.getNowPlayingLabel().setNowPlayingLabel("Now playing: " + fileName);	// !!!!!!!!!!
-            //MyControler.getNowPlayingLabel().setText("Now playing: " + fileName);
-        	//System.out.println(MyControler.getNowPlayingLabel());
-            
-        	
             audioFile = file.toURI().toURL().toString();
             //GetID3TagInfo.getID3TagInfo(); // try to read ID3 tag info when the file is successfully open TODO: ERROR - filenotfound exception
  /* !!! */  PlaybackControls.playFile();
         } else { // incorrect file chosen
-        	Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Invalid file name");
-			alert.setHeaderText("The file you have chosen is not a correct MP3 file!");
-			alert.setContentText("Select a correct *.mp3 input file and try again.");
-			alert.showAndWait();
+        	fileName = "Incorrect file chosen! Try again and choose a valid file";
             audioFile = null;
         	}
     }

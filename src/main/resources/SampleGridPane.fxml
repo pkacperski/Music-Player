@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.*?>
+
+<BorderPane minHeight="720.0" minWidth="900.0" prefHeight="720.0" style="-fx-background-color: #EEEEEE&#10;&#10;&#10;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.MyControler">
+  <!-- TODO Add Nodes -->
+  <bottom>
+    <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <bottom>
+        <HBox id="HBox" alignment="BOTTOM_CENTER" maxHeight="56.000099999997474" maxWidth="305.9998779296875" prefHeight="56.000099999997474" prefWidth="305.9998779296875" spacing="20.0" BorderPane.alignment="BOTTOM_CENTER">
+          <children>
+            <Button id="playBtn" fx:id="playButton" maxHeight="58.0" maxWidth="58.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 0 0 0 0;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;">
+              <font>
+                <Font size="18.0" fx:id="x1" />
+              </font>
+              <graphic>
+                <ImageView disable="false" fitHeight="48.0" fitWidth="48.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" visible="true">
+                  <image>
+                    <Image url="@play.png" />
+                  </image>
+                </ImageView>
+              </graphic>
+            </Button>
+            <Button fx:id="pauseButton" font="$x1" maxHeight="58.0" maxWidth="58.0" mnemonicParsing="false" onAction="#pausePlayback" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 5 5 5 5;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;">
+              <graphic>
+                <ImageView disable="false" fitHeight="48.0" fitWidth="48.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" visible="true">
+                  <image>
+                    <Image url="@pause.png" />
+                  </image>
+                </ImageView>
+              </graphic>
+            </Button>
+            <Button fx:id="stopButton" font="$x1" maxHeight="58.0" maxWidth="58.0" mnemonicParsing="false" onAction="#stopPlayback" prefHeight="58.0" prefWidth="58.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 5 5 5 5;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;">
+              <graphic>
+                <ImageView disable="false" fitHeight="48.0" fitWidth="48.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" visible="true">
+                  <image>
+                    <Image url="@stop.png" />
+                  </image>
+                </ImageView>
+              </graphic>
+            </Button>
+          </children>
+          <BorderPane.margin>
+            <Insets bottom="32.0" />
+          </BorderPane.margin>
+        </HBox>
+      </bottom>
+      <center>
+        <ProgressBar fx:id="progressBar" prefWidth="340.0" progress="0.0">
+          <BorderPane.margin>
+            <Insets bottom="30.0" />
+          </BorderPane.margin>
+        </ProgressBar>
+      </center>
+      <left>
+        <Label id="startTimeLabel" fx:id="currentTimeLabel" text="0:00" BorderPane.alignment="TOP_RIGHT">
+          <font>
+            <Font name="Ubuntu" size="17.0" fx:id="x2" />
+          </font>
+          <BorderPane.margin>
+            <Insets left="240.0" />
+          </BorderPane.margin>
+        </Label>
+      </left>
+      <right>
+        <Label id="finishTimeLabel" fx:id="songLengthLabel" alignment="BOTTOM_LEFT" font="$x2" text="0:00">
+          <BorderPane.margin>
+            <Insets right="240.0" />
+          </BorderPane.margin>
+        </Label>
+      </right>
+      <top>
+        <VBox alignment="TOP_LEFT" fillWidth="false" maxHeight="320.0" maxWidth="340.0" prefHeight="110.0" prefWidth="340.0" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+          <children>
+            <Label fx:id="nowPlayingLabel" alignment="TOP_CENTER" contentDisplay="LEFT" labelFor="$nowPlayingLabel" text="Now playing:" textAlignment="LEFT">
+              <font>
+                <Font name="Ubuntu Italic" size="17.0" />
+              </font>
+            </Label>
+            <Label fx:id="titleLabel" font="$x2" text="Title:">
+              <VBox.margin>
+                <Insets />
+              </VBox.margin>
+            </Label>
+            <Label fx:id="artistLabel" font="$x2" text="Artist:" />
+            <Label fx:id="albumLabel" font="$x2" text="Album:" />
+          </children>
+          <BorderPane.margin>
+            <Insets bottom="28.0" />
+          </BorderPane.margin>
+        </VBox>
+      </top>
+    </BorderPane>
+  </bottom>
+  <center>
+    <ImageView fx:id="cover" disable="false" fitHeight="340.0" fitWidth="340.0" focusTraversable="false" pickOnBounds="true" preserveRatio="true" visible="true" BorderPane.alignment="TOP_CENTER">
+      <image>
+        <Image url="@note.png" />
+      </image>
+      <BorderPane.margin>
+        <Insets top="25.0" fx:id="x4" />
+      </BorderPane.margin>
+    </ImageView>
+  </center>
+  <left>
+    <VBox maxHeight="120.0" maxWidth="180.0" prefHeight="-1.0" prefWidth="-1.0" spacing="14.0">
+      <children>
+        <Button fx:id="openFileBtn" minWidth="155.0" mnemonicParsing="false" onAction="#openFile" prefWidth="155.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 3 30 3 30;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;" text="Open file">
+          <font>
+            <Font size="17.0" fx:id="x3" />
+          </font>
+        </Button>
+        <Button font="$x3" minWidth="155.0" mnemonicParsing="false" prefWidth="155.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 3 0 3 0;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;" text="Open playlist" />
+      </children>
+      <padding>
+        <Insets />
+      </padding>
+      <BorderPane.margin>
+        <Insets left="64.0" top="70.0" />
+      </BorderPane.margin>
+    </VBox>
+  </left>
+  <right>
+    <VBox alignment="BASELINE_RIGHT" maxHeight="120.0" maxWidth="180.0" prefHeight="-1.0" prefWidth="-1.0" spacing="14.0">
+      <children>
+        <Button fx:id="speedButton" alignment="CENTER" contentDisplay="RIGHT" font="$x3" minWidth="155.0" mnemonicParsing="false" onAction="#setSpeed" prefWidth="155.0" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 3 30 3 30;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;" text="Speed" textAlignment="CENTER" />
+        <Button fx:id="loopFragmentButton" alignment="TOP_RIGHT" font="$x3" minWidth="154.9998779296875" mnemonicParsing="false" onAction="#loopFragment" prefWidth="154.9998779296875" style="-fx-background-color: &#10;        rgba(0,0,0,0.08),&#10;        linear-gradient(#9a9a9a, #909090),&#10;        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);&#10;    -fx-background-insets: 0 0 -1 0,0,1;&#10;    -fx-background-radius: 5,5,4;&#10;    -fx-padding: 3 14 3 0;&#10;    -fx-text-fill: #242d35;&#10;    -fx-font-size: 17px;" text="Loop fragment" textAlignment="LEFT" />
+      </children>
+      <BorderPane.margin>
+        <Insets right="64.0" top="61.0" />
+      </BorderPane.margin>
+    </VBox>
+  </right>
+  <top>
+    <Label text="Music Player" textAlignment="CENTER" BorderPane.alignment="CENTER" BorderPane.margin="$x4">
+      <font>
+        <Font name="Ubuntu" size="28.0" />
+      </font>
+    </Label>
+  </top>
+</BorderPane>

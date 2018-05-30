@@ -18,7 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane p = FXMLLoader.load(getClass().getResource("SampleGridPane.fxml"));	
+			BorderPane p = FXMLLoader.load(getClass().getClassLoader().getResource("SampleGridPane.fxml"));	
 			
 			Scene scene = new Scene(p); //(p,400,400);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

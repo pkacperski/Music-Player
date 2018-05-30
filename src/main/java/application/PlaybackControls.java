@@ -17,19 +17,19 @@ public class PlaybackControls {
 	
 	public static void playFunction() {
 		 if (ChooseFile.pauseFlag == false) {
-	    	 if (CutSongFragment.getWereStartStopTimesChanged() == true) // remember the desired start and stop time values
+/*	    	 if (CutSongFragment.getWereStartStopTimesChanged() == true) // remember the desired start and stop time values
 	    		 CutSongFragment.setStartStopTimes();
 	    	 // do not set anything if the user did not give start and stop times
-		 }
+*/		 }
 		 else { // only set stop time if start time is set by pause button
-			if (CutSongFragment.getWereStartStopTimesChanged() == true) {
+/*			if (CutSongFragment.getWereStartStopTimesChanged() == true) {
 	    		CutSongFragment.setStopTime();
 	    		if (ChooseFile.prevStartTime == null) // only if it was not previously overwritten!
 	    			ChooseFile.prevStartTime = ChooseFile.player.getStartTime();
-	    		ChooseFile.player.setStartTime(ChooseFile.startTimeAfterPause);
-			}
+		    		ChooseFile.player.setStartTime(ChooseFile.startTimeAfterPause);
+		}
 			else
-				ChooseFile.player.setStartTime(ChooseFile.startTimeAfterPause);
+*/			ChooseFile.player.setStartTime(ChooseFile.startTimeAfterPause);
 			ChooseFile.pauseFlag = false;
 		 }
 	 ChooseFile.player.setRate(ChooseFile.tempRate);
@@ -57,21 +57,21 @@ public class PlaybackControls {
 		 	ChooseFile.player.stop();
 	 		
 	 		if (ChooseFile.wasPausedFlag == false) { // if pause was not pressed, it is OK to leave start and stop times as they were before
-		 		if (CutSongFragment.getWereStartStopTimesChanged() == true) { // remember the desired start and stop time values
+/*		 		if (CutSongFragment.getWereStartStopTimesChanged() == true) { // remember the desired start and stop time values
 		 				ChooseFile.player.setStartTime(ChooseFile.d.multiply(CutSongFragment.startTime));
 		 				ChooseFile.player.setStopTime(ChooseFile.d.multiply(CutSongFragment.stopTime));
 		 		} // no need for else here - if there was no pause and no start or stop time change, stop returns to the beggining of the file by default		
-		 	}
-	 		else { // pause was pressed - start from the set startTime, not from the moment of last pause!
+*/		 	}
+/*	 		else { // pause was pressed - start from the set startTime, not from the moment of last pause!
 	 			if (CutSongFragment.getWereStartStopTimesChanged() == true) { // remember the desired start and stop time values
 		 			if (ChooseFile.prevStartTime != null)
 		 				ChooseFile.player.setStartTime(ChooseFile.prevStartTime);
 		 			ChooseFile.player.setStopTime(ChooseFile.d.multiply(CutSongFragment.stopTime));
 	 			}
-	 			else { // the user did not give startTime or stopTime and pause was pressed - start playing file from the beginning
+*/	 			else { // the user did not give startTime or stopTime and pause was pressed - start playing file from the beginning
 	 				ChooseFile.player.setStartTime(ChooseFile.d.multiply(0.0));
 	 			}
-	 		}
+	 		//}
 	 }
 	 
 		
