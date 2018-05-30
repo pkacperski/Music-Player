@@ -1,3 +1,5 @@
+package application;
+
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -31,7 +33,14 @@ public class PlaybackControls {
 			ChooseFile.pauseFlag = false;
 		 }
 	 ChooseFile.player.setRate(ChooseFile.tempRate);
-	 ChooseFile.player.play();
+	 Thread playThread = new Thread() {
+         @Override
+         public void run(){
+        	 ChooseFile.player.play();
+         }
+     };
+     playThread.start();
+	 //ChooseFile.player.play();
 	}
 	
 	 public static void pauseFile(){

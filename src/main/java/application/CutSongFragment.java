@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -15,7 +17,7 @@ public class CutSongFragment {
 	public static double origStartTime;
 	static Boolean startTimeChanged = false;
 	
-	public static void cutFragment(){
+public static void cutFragment(){
 		Optional<Pair<String, String>> result = OpenCutDialog.openNewDialogForCutFragment();
 		
 		if (result.isPresent()){
@@ -42,19 +44,19 @@ public class CutSongFragment {
 			else // else set stopTime to a given value
 				stopTime = Double.parseDouble(realResult.substring(shift, realResult.length()-1)); 
 			
-			if (startTime >= stopTime || startTime < 0 || stopTime <= 0) {
-					Alert alert = new Alert(AlertType.ERROR);
+		if (startTime >= stopTime || startTime < 0 || stopTime <= 0) {
+					Alert alert = new Alert(AlertType.ERROR); // pom
 					alert.setTitle("Wrong input values");
 					alert.setHeaderText("Incorrect start time and/or stop time values!");
 					alert.setContentText("Stop time must be greater than start time,\nboth must not be negative.\nCorrect the input and try again");
 					alert.showAndWait();
 				}
-			// both times are correct - set both and start playing the given fragment
+		// both times are correct - set both and start playing the given fragment
 			wereStartStopTimesChanged = true;
 			setStartStopTimes();
 		} 		
 	} // cutFragment()
-	
+		
 	public static void setStartStopTimes() {
 		Duration d = new Duration(1000); // duration of one second
 		ChooseFile.getPlayer().setStartTime(d.multiply(startTime)); 

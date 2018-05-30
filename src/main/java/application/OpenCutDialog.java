@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Optional;
 
 import javafx.application.Platform;
@@ -54,8 +56,7 @@ public class OpenCutDialog {
 		
 		Optional<Pair<String, String>> result = dialog.showAndWait();
 		return result;		
-	}
-	
+	}	
 	
 	public OpenCutDialog() {
 		try {
