@@ -1,9 +1,0 @@
-This commit contains the latest develop version, which DOES NOT build with maven due to JavaFX version issues (the project required newer version of javafx plugins that were available anywhere at the moment).
-
-To run this version of project, one needs:
-* JDK 9 
-* Eclipse IDE with e(fx)clipse plugin
-* to import this project to Eclipse manually by selecting File -> Open projects from file system
-
-The latest fully-functioning version is available on branch master.
-Work is done to make this version build with maven and merge the branches as a result.
